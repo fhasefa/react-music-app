@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Form from './components/Form';
+import Dropdown from './components/Dropdown';
 
 function App() {
+
+  let [song, setSong] = useState('')
+
+async function getSong(input) {
+    let url = `https://spotify23.p.rapidapi.com/search/?q=${input}&type=tracks&offset=0&limit=1&numberOfTopResults=5`
+    try {
+    const res = await fetch(
+        url,
+        {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
+                'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+            }
+        }
+    );
+    const data = await res.json(); // Extracting data as a JSON Object from the response
+    {console.log(data)}
+
+    setSong(data)
+    
+  } catch(error) {
+      console.log(error)
+    }
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dropdown />
+      <Form getSong={ getSong }/>
     </div>
   );
 }
