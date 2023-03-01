@@ -1,14 +1,16 @@
 import './App.css';
 import { useState } from 'react';
 import Form from './components/Form';
+import Nav from './components/Nav';
+import Display from './components/Display';
 import Dropdown from './components/Dropdown';
 
 function App() {
 
-  let [song, setSong] = useState('')
+  let [song, setSong] = useState(null)
 
-async function getSong(input) {
-    let url = `https://spotify23.p.rapidapi.com/search/?q=${input}&type=tracks&offset=0&limit=1&numberOfTopResults=5`
+async function getSong(input, type) {
+    let url = `https://spotify23.p.rapidapi.com/search/?q=${input}&type=${type}&offset=0&limit=5&numberOfTopResults=5`
     try {
     const res = await fetch(
         url,
@@ -21,7 +23,9 @@ async function getSong(input) {
         }
     );
     const data = await res.json(); // Extracting data as a JSON Object from the response
-    {console.log(data)}
+    // console.log(data)
+    // console.log(res)
+
 
     setSong(data)
     
@@ -32,8 +36,10 @@ async function getSong(input) {
 
   return (
     <div className="App">
-      <Dropdown />
+      <Nav />
+      <Dropdown getSong={ getSong }/>
       <Form getSong={ getSong }/>
+      {song &&<Display song={song}/>}
     </div>
   );
 }
