@@ -1,16 +1,17 @@
 import './App.css';
 import { useState } from 'react';
-import Form from './components/Form';
 import Nav from './components/Nav';
-import Display from './components/Display';
-import Dropdown from './components/Dropdown';
+import Home from './pages/Home';
+import Trackinfo from './pages/TrackInfo';
+import About from './pages/About';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
   let [song, setSong] = useState(null)
 
-async function getSong(input, type) {
-    let url = `https://spotify23.p.rapidapi.com/search/?q=${input}&type=${type}&offset=0&limit=5&numberOfTopResults=5`
+async function getSong(input) {
+    let url = `https://spotify23.p.rapidapi.com/search/?q=${input}&type=muulti&offset=0&limit=6&numberOfTopResults=5`
     try {
     const res = await fetch(
         url,
@@ -23,7 +24,7 @@ async function getSong(input, type) {
         }
     );
     const data = await res.json(); // Extracting data as a JSON Object from the response
-    // console.log(data)
+    console.log(data)
     // console.log(res)
 
 
@@ -37,9 +38,12 @@ async function getSong(input, type) {
   return (
     <div className="App">
       <Nav />
-      <Dropdown getSong={ getSong }/>
-      <Form getSong={ getSong }/>
-      {song &&<Display song={song}/>}
+
+      <Routes>
+        <Route path='/' element={<Home getSong={ getSong } song={ song }/>}/>
+        <Route Path='/trackinfo/:symbol' element={<Trackinfo />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </div>
   );
 }
