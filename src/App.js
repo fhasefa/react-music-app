@@ -41,7 +41,7 @@ async function getSong(input) {
 
       <Routes>
         <Route path='/' element={<Home getSong={ getSong } song={ song }/>}/>
-        <Route Path='/trackinfo/:symbol' element={<Trackinfo />} />
+        <Route path='/trackinfo/:id' element={<Trackinfo song={ song }/>} />
         <Route path='/about' element={<About />} />
       </Routes>
     </div>

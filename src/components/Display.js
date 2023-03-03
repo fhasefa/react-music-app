@@ -7,7 +7,7 @@ export default function Display({song}) {
         {song.tracks.items.map((x) => (
             <>
                 <h3 key={x.id} className="">{x.data.name}</h3>
-                <Link key={x.data.albumOfTrack.id} to={`/trackinfo/${x.data.albumOfTrack.id}`}>
+                <Link key={x.data.albumOfTrack.id} to={`/trackinfo/${x.data.id}`}>
                     <img key={x.data.albumOfTrack.id} src={x.data.albumOfTrack.coverArt.sources[0].url} alt={x.data.albumOfTrack.coverArt.name}/>
                 </Link>
             </>
