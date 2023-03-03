@@ -6,11 +6,11 @@ export default function Nav() {
                 <Link to='/'>
                     <div>Home</div>
                 </Link>
-                <Link to='/about'>
-                    <div>About</div>
-                </Link>
                 <Link to='/trackinfo/:id'>
                     <div>Track Info</div>
+                </Link>
+                <Link to='/about'>
+                    <div>About</div>
                 </Link>
             </div>
         )
