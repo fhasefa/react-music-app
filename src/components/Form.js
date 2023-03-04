@@ -15,6 +15,7 @@ export default function Form({getSong}) {
 
     return(
         <form onSubmit={handleSubmit}>
+            <h1>Search for Songs by Name</h1>
             <input value={input} onChange={handleChange}></input>
             <button>Search</button>
         </form>

@@ -1,14 +1,14 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  background-color: black;
+  background-color: #DB2B39;
   color: white;
   padding: 15px;
   font-size: 2em;
 }
 
 .nav a {
-  color: white;
+  color: #17301C;
   text-decoration: none;
 }
 
@@ -19,4 +19,8 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+}
+
+body {
+  background-color: #B8B8D1;
 }
