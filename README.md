@@ -27,3 +27,5 @@ React Music App was built using the following technologies:
 ## Contributing
 
 Contributions are welcome! If you have any suggestions or bug reports, please feel free to create an issue or submit a pull request.
+
+Here is the link to the app: react-music-app-20a19c.netlify.app
